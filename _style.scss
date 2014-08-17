@@ -1,0 +1,186 @@
+/* CSS using SCSS
+        Created By: Don Page on 8/15/14
+        @DonRPage
+*/
+
+@import url(http://fonts.googleapis.com/css?family=Orbitron:400,700);
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,300,600);
+/* #RESETS/Clear */
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  vertical-align: baseline;
+  background: transparent;
+  list-style-type: none;
+  text-decoration: none;
+}
+
+.clearfix {
+  &:before, &:after {
+    content: " ";
+    display: table;
+  }
+  &:after {
+    clear: both;
+  }
+}
+
+/* **************************** */
+
+$penText: #76daff;
+
+body {
+  width: 100%;
+  height: 100%;
+  background-color: #3e454d;
+  line-height: 1.5;
+}
+
+header {
+  margin-top: 50px;
+  text-align: center;
+  color: #eee;
+  h1 {
+
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 700;
+    border-bottom: 1px solid #f7565f;
+    width: auto;
+    padding-bottom: 10px;
+  }
+  p {
+    padding-top: 10px;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 600;
+
+  }
+  span {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 400;
+    font-size: 11px;
+  }
+
+}
+
+.content-wrapper {
+//  background-color: #eee;
+  width: 920px;
+  height: auto;
+  margin: 50px auto;
+  padding: 0 10px;
+
+}
+
+.embed-pen {
+  -webkit-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.41);
+  -moz-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.41);
+  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.41);
+  margin: 39px 0;
+  background-color: #3d3d3e;
+  color: $penText;
+  font-family: 'Open Sans', HelveticaNeue-Light, Helvetica, Arial, sans-serif;
+  font-weight: 300;
+  font-size: 13px;
+  .default-info-wrapper, .edit-info-wrapper {
+    height: 35px;
+    padding: 5px 16px;
+    .title {
+      float: left;
+      line-height: 2.5;
+    }
+    .btn-wrapper {
+      float: right;
+      button {
+
+        text-indent: -9999;
+        cursor: pointer;
+      }
+      button.edit-btn {
+        background: url("http://i.imgur.com/k7meUMM.png");
+        width: 46px;
+        height: 33px;
+      }
+      button.save-edit {
+        background: url("http://i.imgur.com/buardpu.png");
+        width: 36px;
+        height: 31px;
+      }
+      button.cancel-edit {
+        background: url("http://i.imgur.com/7ejKZ0q.png");
+        width: 30px;
+        height: 30px;
+      }
+      button.trash-btn{
+        background: url("http://i.imgur.com/qzZ6P8U.png") center no-repeat;
+        width: 46px;
+        height: 33px;
+      }
+
+    }
+  }
+  .edit-fields {
+    width: 100%;
+    border-top: 34px solid #3d3d3e;
+    background-color: #EEE;
+  }
+}
+
+label{
+  color: #757575;
+  display: inline;
+  font-size:18px;
+  font-weight:normal;
+  left:5px;
+  top:10px;
+}
+
+input {
+  font-size: 18px;
+  padding: 10px 10px 10px 5px;
+  display: inline;
+  width: 300px;
+  border: none;
+  border-bottom: 1px solid #757575;
+//  border-left: 1px solid #757575;
+  &:focus{
+    outline: none;
+  }
+}
+
+#penHash, #penHeight{
+  width: 150px;
+}
+
+.inputs-wrapper{
+  padding: 20px 13px;
+}
+
+
+.newPenFields{
+  -webkit-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.41);
+  -moz-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.41);
+  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.41);
+  background: #eee;
+  border-top: 34px solid #3d3d3e;
+  button{
+    font-family: 'Open Sans', HelveticaNeue-Light, Helvetica, Arial, sans-serif;
+    font-size: 18px;
+    color: #76daff;
+    width: 100%;
+    height: 35px;
+    background-color: #3d3d3e;
+    &:hover{
+      cursor: pointer;
+      background-color: #5c5c5d;
+    }
+  }
+}
+
+
+ 
+
+
+ 
+ 

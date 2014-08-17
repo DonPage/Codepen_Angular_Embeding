@@ -1,0 +1,131 @@
+<html>
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>PenEmbed</title>
+
+
+    <script type="text/javascript" src="angular.min.js"></script>
+    <script type="text/javascript" src="main.js"></script>
+    <script type="text/javascript" src="service.js"></script>
+
+    <link rel="stylesheet" href="style.css">
+
+
+</head>
+<body ng-app="PenEmbed" ng-controller="embedController">
+
+
+<header>
+    <h1>Personal EmbedPen Storage</h1>
+
+    <p>Using Angular and Codepen's embeding, you can save any codepen to this codepen... It sounded awesome in my
+        head. </p>
+    <span>Saving will be in LocalStorage.</span>
+</header>
+
+<div class="content-wrapper">
+    <div class="pens-wrapper">
+
+        <div ng-switch on="(editIndex == $index)" ng-repeat="pen in penArray track by $index" class="embed-pen">
+
+            <!-- DEFAULT FIELD -->
+            <div ng-switch-default>
+
+
+                <p data-height="{{pen.height}}" data-theme-id="0" data-slug-hash="{{pen.hash}}"
+                   data-default-tab="{{pen.tab}}" class='codepen'>
+
+                    <!--See the Pen <a href='{{pen.url}}'>{{pen.title}}</a> by {{pen.author}} (<a href='http://codepen.io/DonPage'>@DonPage</a>) on <a href='http://codepen.io'>CodePen</a>.-->
+                </p>
+                <script async ng-src="http://codepen.io/assets/embed/ei.js"></script>
+                <!--    NEEDS TO BE ng-src instead of src -->
+
+            </div>
+
+
+            <!-- EDIT FIELD -->
+            <div ng-switch-when="true" class="edit-fields" style="height: {{pen.height - 14}}">
+                <div class="inputs-wrapper">
+                    <label for="penLink">Pen Link: </label>
+                    <input ng-model="editPenObj.url" id="penLink" type="text" placeholder="URL"/>
+
+                    <!-- Going to try to extract the hash from URL input -->
+                    <!--<label for="penHash">Pen Hash: </label>-->
+                    <!--<input id="penHash" type="text" placeholder="/hAsH/"/>-->
+
+                    <label for="penHeight">Height: </label>
+                    <input ng-model="editPenObj.height" id="penHeight" type="text" placeholder="default 300"/>
+                </div>
+
+                <div class="inputs-wrapper">
+                    <label for="penTitle">Pen Title: </label>
+                    <input ng-model="editPenObj.title" id="penTitle" type="text" placeholder="pen title"/>
+
+                    <label for="penAuthor">Pen Author: </label>
+                    <input ng-model="editPenObj.author" id="penAuthor" type="text" placeholder="pen Author"/>
+                </div>
+
+                <div class="inputs-wrapper">
+                    <label for="tab">Default Tab:</label>
+                    <input ng-model="editPenObj.tab" id="tab" type="text"/>
+                </div>
+
+            </div>
+
+            <!-- DEFAULT PANEL -->
+            <div ng-switch-default class="default-info-wrapper clearfix">
+                <h3 class="title">{{pen.title}} by {{pen.author}}</h3>
+
+                <div class="btn-wrapper">
+                    <button class="edit-btn" ng-click="editMode($index)">Edit</button>
+                    <!--<button class="trash-btn" ng-click="trash($index)">Trash</button>-->
+                    <button class="trash-btn" ng-click="trash($index)">Trash</button>
+                </div>
+            </div>
+
+            <!-- EDIT PANEL -->
+            <div ng-switch-when="true" class="edit-info-wrapper">
+                <h3 class="title">EDIT MODE</h3>
+
+                <div class="btn-wrapper">
+                    <button ng-click="saveEdit($index)" class="save-edit">Save Edit</button>
+                    <button ng-click="cancelEdit()" class="cancel-edit">Cancel Edit</button>
+
+                </div>
+            </div>
+
+
+        </div>
+        <form ng-submit="addnewPen()" class="newPenFields">
+            <div class="inputs-wrapper">
+                <label for="newpenLink">Pen Link: </label>
+                <input ng-model="newpenLink" id="newpenLink" type="text" placeholder="URL"/>
+
+
+                <label for="newpenHeight">Height: </label>
+                <input ng-model="newpenHeight" id="newpenHeight" type="text" placeholder="default 300"/>
+            </div>
+
+            <div class="inputs-wrapper">
+                <label for="newpenTitle">Pen Title: </label>
+                <input ng-model="newpenTitle" id="newpenTitle" type="text" placeholder="pen title"/>
+
+                <label for="newpenAuthor">Pen Author: </label>
+                <input ng-model="newpenAuthor" id="newpenAuthor" type="text" placeholder="pen Author"/>
+            </div>
+
+            <div class="inputs-wrapper">
+                <label for="newtab">Default Tab:</label>
+                <input ng-model="newtab" id="newtab" type="text"/>
+            </div>
+            <button type="submit">Add Pen</button>
+
+        </form>
+    </div>
+
+
+</div>
+
+
+</body>
+</html>
