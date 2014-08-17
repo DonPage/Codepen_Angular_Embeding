@@ -14,11 +14,12 @@ angular.module("PenEmbed")
         ];
 
         var shadowArray = false;
+
         /*
-        Shadow array is the needed fail safe when deleting pens. Before, for some odd reason,
-        when you delete a pen it would splice the right item out of the array but it wouldn't coordinate
-        to the view. Ex: deleting penArray[1] would splice out penArray[1] but penArray[1] from the DOM would still show
-        while penArray[2] would not... Even though the array was handle correctly.
+         Shadow array is the needed fail safe when deleting pens. Before, for some odd reason,
+         when you delete a pen it would splice the right item out of the array but it wouldn't coordinate
+         to the view. Ex: deleting penArray[1] would splice out penArray[1] but penArray[1] from the DOM would still show
+         while penArray[2] would not... Even though the array was handle correctly.
          */
 
         this.getPenArray = function(){
@@ -42,13 +43,15 @@ angular.module("PenEmbed")
             penDiv[index].style.display = "none";
             shadowArray = angular.copy(penArray);
             shadowArray.splice(index, 1);
+            console.log("shadowArray: ", shadowArray.length);
             saveLS();
 
 
         };
 
         function saveLS(){
-            if (shadowArray != false){
+            if (shadowArray != false || shadowArray.length == 0){
+                console.log("shadow array valid");
                 penArray = shadowArray;
                 shadowArray = false;
             }
