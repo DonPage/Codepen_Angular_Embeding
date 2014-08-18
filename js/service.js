@@ -45,8 +45,6 @@ angular.module("PenEmbed")
             shadowArray.splice(index, 1);
             console.log("shadowArray: ", shadowArray.length);
             saveLS();
-
-
         };
 
         function saveLS(){
